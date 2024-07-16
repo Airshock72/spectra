@@ -23,7 +23,10 @@
     "react-native/no-raw-text": "off",
     "react/prop-types": "off",
     "jsx-quotes": ["error", "prefer-single"],
-    "semi": ["error", "never"]
+    "semi": ["error", "never"],
+    "no-trailing-spaces": "error",
+    "indent": ["error", 2],
+    "object-curly-spacing": ["error", "always"]
   },
   "settings": {
     "react": {
