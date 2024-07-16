@@ -19,10 +19,10 @@
   },
   "plugins": ["react", "react-native", "prettier"],
   "rules": {
-    "prettier/prettier": "error",
     "react-native/no-inline-styles": "off",
     "react-native/no-color-literals": "off",
-    "react-native/no-raw-text": "off"
+    "react-native/no-raw-text": "off",
+    "prettier/prettier": ["error", { "semi": false }]
   },
   "settings": {
     "react": {

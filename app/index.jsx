@@ -1,7 +1,7 @@
-import React from 'react';
-import { View, Text } from 'react-native';
-import { Link } from 'expo-router';
-import { StatusBar } from 'expo-status-bar';
+import React from 'react'
+import { View, Text } from 'react-native'
+import { Link } from 'expo-router'
+import { StatusBar } from 'expo-status-bar'
 
 export default function App() {
   return (
@@ -12,5 +12,5 @@ export default function App() {
         Go to Home
       </Link>
     </View>
-  );
+  )
 }
