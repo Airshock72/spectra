@@ -5,20 +5,26 @@ import { images } from '../../constants'
 import SearchInput from '../../components/SearchInput'
 import Trending from '../../components/Trending'
 import EmptyState from '../../components/EmptyState'
+import useAppwrite from '../../lib/useAppwrite'
+import { getAllPosts } from '../../lib/appwrite'
+import VideoCard from '../../components/VideoCard'
 
 const Home = () => {
+  const hook = useAppwrite({ fn: getAllPosts })
   const [refreshing, setRefreshing] = useState(false)
   const onRefresh = async () => {
     setRefreshing(true)
+    await hook.refetch()
     setRefreshing(false)
   }
+
   return (
     <SafeAreaView className='bg-primary h-full'>
       <FlatList
-        data={[{ id: 1 },{ id: 2 },{ id: 3 }]}
+        data={hook.data}
         // data={[]}
         keyExtractor={(item) => item.$id}
-        renderItem={({ item }) => <Text className='text-white'>{item.id}</Text>}
+        renderItem={({ item }) => <VideoCard video={item} />}
         ListHeaderComponent={() => (
           <View className='my-6 px-4 space-y-6'>
             <View className='justify-between items-start flex-row mb-6'>
