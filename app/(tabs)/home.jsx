@@ -6,23 +6,23 @@ import SearchInput from '../../components/SearchInput'
 import Trending from '../../components/Trending'
 import EmptyState from '../../components/EmptyState'
 import useAppwrite from '../../lib/useAppwrite'
-import { getAllPosts } from '../../lib/appwrite'
+import { getAllPosts, getLatestPosts } from '../../lib/appwrite'
 import VideoCard from '../../components/VideoCard'
 
 const Home = () => {
-  const hook = useAppwrite({ fn: getAllPosts })
+  const videosHook = useAppwrite({ fn: getAllPosts })
+  const latestVideosHook = useAppwrite({ fn: getLatestPosts })
   const [refreshing, setRefreshing] = useState(false)
   const onRefresh = async () => {
     setRefreshing(true)
-    await hook.refetch()
+    await videosHook.refetch()
     setRefreshing(false)
   }
 
   return (
     <SafeAreaView className='bg-primary h-full'>
       <FlatList
-        data={hook.data}
-        // data={[]}
+        data={videosHook.data}
         keyExtractor={(item) => item.$id}
         renderItem={({ item }) => <VideoCard video={item} />}
         ListHeaderComponent={() => (
@@ -43,7 +43,7 @@ const Home = () => {
             <SearchInput />
             <View className='w-full flex-1 pt-5 pb-8'>
               <Text className='text-gray-100 text-lg font-pregular'>Latest Videos</Text>
-              <Trending posts={[{ id: 1 }, { id: 2 }, { id: 3 }] ?? []} />
+              <Trending posts={latestVideosHook.data ?? []} />
             </View>
           </View>
         )}
