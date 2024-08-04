@@ -1,7 +1,8 @@
-import { Text, FlatList, Image, TouchableOpacity, ImageBackground } from 'react-native'
+import { FlatList, Image, TouchableOpacity, ImageBackground } from 'react-native'
 import React, { useState } from 'react'
 import * as Animatable from 'react-native-animatable'
 import { icons } from '../constants'
+import WebView from 'react-native-webview'
 
 const zoomIn = {
   0: {
@@ -30,7 +31,20 @@ const TrendingItem = (props) => {
       duration={500}
     >
       {play
-        ? <Text className='text-white'>Playing</Text>
+        ? <WebView
+          source={{ uri: props.item.video }}
+          className='w-52 h-72 rounded-[33px] mt-3 bg-white/10'
+          javaScriptEnabled={true}
+          domStorageEnabled={true}
+          onMessage={e => {
+            const message = e.nativeEvent.data
+            if (message === 'videoEnded') {
+              setPlay(false)
+            }
+          }}
+          mediaPlaybackRequiresUserAction={true}
+          allowsInlineMediaPlayback={true}
+        />
         : <TouchableOpacity
           onPress={() => setPlay(true)}
           className='relative justify-center items-center'
