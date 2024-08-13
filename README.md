@@ -48,3 +48,8 @@ Join our community of developers creating universal apps.
 
 - [Expo on GitHub](https://github.com/expo/expo): View our open source platform and contribute.
 - [Discord community](https://chat.expo.dev): Chat with Expo users and ask questions.
+
+- Scan QR code to view Project. Must Download Expo Go Application from App/Play Store
+
+![image](https://github.com/user-attachments/assets/0a1f1fe5-6b2e-42b2-9b11-cd7733d830a2)
+
