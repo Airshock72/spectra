@@ -30,6 +30,21 @@
     },
     "plugins": [
       "expo-router"
-    ]
+    ],
+    "extra": {
+      "router": {
+        "origin": false
+      },
+      "eas": {
+        "projectId": "1e50b759-1e1e-4db6-8344-530c43505cb6"
+      }
+    },
+    "owner": "airshock",
+    "runtimeVersion": {
+      "policy": "appVersion"
+    },
+    "updates": {
+      "url": "https://u.expo.dev/1e50b759-1e1e-4db6-8344-530c43505cb6"
+    }
   }
 }
